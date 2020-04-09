@@ -39,7 +39,7 @@ const writeToFile = (text, target) => {
 	fs.writeFile(target, text, 'utf8', (err) => {
 		if (err) {
 			console.log(`ERROR: Could not write to file.`);
-			process.exit(1);
+			//process.exit(1);
 		}
 		console.log(`Saved to file ${target}`);
 	})
