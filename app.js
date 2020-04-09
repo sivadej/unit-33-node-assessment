@@ -10,19 +10,17 @@ app.post('/', async function (req, res) {
 	if (!usernames) res.send('Invalid request received');
 
 	// create an array of promises resolving API response per name
-	let userData = await Promise.all(usernames.map(username => {
-		return axios.get(`https://api.github.com/users/${username}`);
-	})).catch(err=>res.send(err));
+	let userData = await Promise.all(usernames.map(username => 
+		axios.get(`https://api.github.com/users/${username}`)
+	)).catch(err=>res.send(err));
 
 	// create array as output to response
 	let output = userData.map(user => {
 		return {name: user.data.name, bio: user.data.bio};
 	})
-	
 	res.send(output);
 
 });
-
 
 app.get("/", function(httpRequest, httpResponse, next){
     httpResponse.write("!!! Hello");
@@ -34,4 +32,4 @@ app.get("/", function(httpRequest, httpResponse, next){
     httpResponse.end();
 });
 
-app.listen(3000);
+app.listen(3002);
