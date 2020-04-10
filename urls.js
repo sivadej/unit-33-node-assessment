@@ -28,6 +28,7 @@ const processData = async url => {
 		if (resp.status === 200) {
 			console.log(`Successful response from ${url}`);
 			fileToWrite = makeFileName(url);
+			console.log(resp);
 			writeToFile(resp.data, fileToWrite);
 		}
 	} catch(e) {
